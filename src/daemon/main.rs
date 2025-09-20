@@ -17,7 +17,7 @@ use gopal::mpris_monitor::MprisMonitor;
 #[command(version = "0.1.0")]
 struct Args {
     /// Path to the SQLite database file
-    #[arg(short, long, default_value = "~/.local/share/musicd/music.db")]
+    #[arg(short, long, default_value = "~/.local/share/gopal/music.db")]
     database: String,
 
     /// Configuration file path

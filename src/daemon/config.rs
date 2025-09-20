@@ -54,7 +54,7 @@ impl Default for Config {
     fn default() -> Self {
         Config {
             database: DatabaseConfig {
-                path: "~/.local/share/musicd/music.db".to_string(),
+                path: "~/.local/share/gopal/music.db".to_string(),
                 pool_size: None,
             },
             monitoring: MonitoringConfig {

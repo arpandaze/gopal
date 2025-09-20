@@ -2,8 +2,8 @@
 //! 
 //! This file exists to satisfy Cargo's requirement for a main.rs file
 //! when building a library crate. The actual binaries are in:
-//! - src/daemon/main.rs (musicd daemon)
-//! - src/cli/main.rs (music-cli query tool)
+//! - src/daemon/main.rs (gopald daemon)
+//! - src/cli/main.rs (gopal-cli query tool)
 
 fn main() {
     eprintln!("This is a library crate. Use one of the following binaries:");

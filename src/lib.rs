@@ -16,10 +16,10 @@ pub use session_tracker::{SessionTracker, SessionEvent};
 pub const VERSION: &str = env!("CARGO_PKG_VERSION");
 
 /// Default database path relative to home directory
-pub const DEFAULT_DB_PATH: &str = "~/.local/share/musicd/music.db";
+pub const DEFAULT_DB_PATH: &str = "~/.local/share/gopal/music.db";
 
 /// Default configuration directory
-pub const DEFAULT_CONFIG_DIR: &str = "~/.config/musicd";
+pub const DEFAULT_CONFIG_DIR: &str = "~/.config/gopal";
 
 #[cfg(test)]
 mod tests {
@@ -32,7 +32,7 @@ mod tests {
 
     #[test]
     fn test_constants() {
-        assert!(DEFAULT_DB_PATH.contains("musicd"));
-        assert!(DEFAULT_CONFIG_DIR.contains("musicd"));
+        assert!(DEFAULT_DB_PATH.contains("gopal"));
+        assert!(DEFAULT_CONFIG_DIR.contains("gopal"));
     }
 }

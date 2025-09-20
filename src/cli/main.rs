@@ -12,7 +12,7 @@ use gopal::database::{Database, ListeningStats};
 #[command(version = "0.1.0")]
 struct Args {
     /// Path to the SQLite database file
-    #[arg(short, long, default_value = "~/.local/share/musicd/music.db")]
+    #[arg(short, long, default_value = "~/.local/share/gopal/music.db")]
     database: String,
 
     /// Output format
@@ -118,7 +118,7 @@ async fn main() -> Result<()> {
     // Check if database exists
     if !db_path.exists() {
         eprintln!("Database not found at: {}", db_path.display());
-        eprintln!("Make sure the musicd daemon has been running to collect data.");
+        eprintln!("Make sure the gopald daemon has been running to collect data.");
         std::process::exit(1);
     }
 

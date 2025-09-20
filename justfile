@@ -11,33 +11,33 @@ default:
 # Start daemon in development mode with auto-restart
 dev:
     @echo "Starting gopald in development mode with bacon auto-restart..."
-    @echo "Using development database: ~/.local/share/musicd/music_dev.db"
-    RUST_LOG=info bacon -- --bin gopald -- --database ~/.local/share/musicd/music_dev.db --foreground --verbose
+    @echo "Using development database: ~/.local/share/gopal/music_dev.db"
+    RUST_LOG=info bacon -- --bin gopald -- --database ~/.local/share/gopal/music_dev.db --foreground --verbose
 
 # Start daemon once in development mode (no auto-restart)
 dev-once:
     @echo "Starting gopald in development mode (single run)..."
-    @echo "Using development database: ~/.local/share/musicd/music_dev.db"
-    RUST_LOG=info cargo run --bin gopald -- --database ~/.local/share/musicd/music_dev.db --foreground --verbose
+    @echo "Using development database: ~/.local/share/gopal/music_dev.db"
+    RUST_LOG=info cargo run --bin gopald -- --database ~/.local/share/gopal/music_dev.db --foreground --verbose
 
 # Reset development database
 reset-db:
     @echo "Resetting development database..."
-    rm -f ~/.local/share/musicd/music_dev.db
+    rm -f ~/.local/share/gopal/music_dev.db
     @echo "Development database deleted."
 
 # Query development database
 dev-stats:
     @echo "Development database stats:"
-    cargo run --bin gopal-cli -- --database ~/.local/share/musicd/music_dev.db stats --period today
+    cargo run --bin gopal-cli -- --database ~/.local/share/gopal/music_dev.db stats --period today
 
 dev-history:
     @echo "Development database history:"
-    cargo run --bin gopal-cli -- --database ~/.local/share/musicd/music_dev.db history --period today
+    cargo run --bin gopal-cli -- --database ~/.local/share/gopal/music_dev.db history --period today
 
 dev-status:
     @echo "Development database status:"
-    cargo run --bin gopal-cli -- --database ~/.local/share/musicd/music_dev.db status
+    cargo run --bin gopal-cli -- --database ~/.local/share/gopal/music_dev.db status
 
 # Build Commands
 # ==============
@@ -81,8 +81,8 @@ install: build-release
     @echo "✓ Binaries installed to /usr/local/bin/"
     
     # Create necessary directories
-    mkdir -p ~/.local/share/musicd
-    mkdir -p ~/.config/musicd
+    mkdir -p ~/.local/share/gopal
+    mkdir -p ~/.config/gopal
     @echo "✓ Created application directories"
     
     # Copy systemd service file
@@ -124,7 +124,7 @@ uninstall:
     sudo rm -f /usr/local/bin/gopal-cli
     @echo "✓ Binaries removed from /usr/local/bin/"
     
-    @echo "Note: Database remains at ~/.local/share/musicd/ (remove manually if needed)"
+    @echo "Note: Database remains at ~/.local/share/gopal/ (remove manually if needed)"
 
 # Service management
 # ==================
