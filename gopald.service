@@ -1,0 +1,31 @@
+[Unit]
+Description=Music Listening Tracker Daemon
+After=graphical-session.target
+Wants=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=%h/.cargo/bin/gopald --foreground
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+# Environment variables
+Environment=RUST_LOG=info
+Environment=XDG_RUNTIME_DIR=%t
+
+# Security settings
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=%h/.local/share/musicd
+ReadWritePaths=%h/.config/musicd
+
+# Resource limits
+MemoryMax=100M
+CPUQuota=10%
+
+[Install]
+WantedBy=default.target
