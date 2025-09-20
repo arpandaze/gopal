@@ -5,7 +5,7 @@ Wants=graphical-session.target
 
 [Service]
 Type=simple
-ExecStart=%h/.cargo/bin/gopald --foreground
+ExecStart=/usr/local/bin/gopald --foreground
 Restart=always
 RestartSec=5
 StandardOutput=journal
@@ -20,8 +20,8 @@ NoNewPrivileges=true
 PrivateTmp=true
 ProtectSystem=strict
 ProtectHome=read-only
-ReadWritePaths=%h/.local/share/musicd
-ReadWritePaths=%h/.config/musicd
+ReadWritePaths=%h/.local/share
+ReadWritePaths=%h/.config
 
 # Resource limits
 MemoryMax=100M

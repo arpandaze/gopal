@@ -73,9 +73,17 @@ lint:
 install: build-release
     @echo "Installing gopald to production..."
     
-    # Install binaries
-    cargo install --path . --force
-    @echo "✓ Binaries installed to ~/.cargo/bin/"
+    # Install binaries to system location
+    sudo cp target/release/gopald /usr/local/bin/
+    sudo cp target/release/gopal-cli /usr/local/bin/
+    sudo chmod +x /usr/local/bin/gopald
+    sudo chmod +x /usr/local/bin/gopal-cli
+    @echo "✓ Binaries installed to /usr/local/bin/"
+    
+    # Create necessary directories
+    mkdir -p ~/.local/share/musicd
+    mkdir -p ~/.config/musicd
+    @echo "✓ Created application directories"
     
     # Copy systemd service file
     mkdir -p ~/.config/systemd/user
@@ -111,7 +119,11 @@ uninstall:
     systemctl --user daemon-reload
     @echo "✓ Service file removed"
     
-    @echo "Note: Binaries remain in ~/.cargo/bin/ (remove manually if needed)"
+    # Remove binaries
+    sudo rm -f /usr/local/bin/gopald
+    sudo rm -f /usr/local/bin/gopal-cli
+    @echo "✓ Binaries removed from /usr/local/bin/"
+    
     @echo "Note: Database remains at ~/.local/share/musicd/ (remove manually if needed)"
 
 # Service management

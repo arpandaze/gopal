@@ -34,10 +34,10 @@ cargo build --release
 cargo install --path .
 
 # Set up systemd service manually
-cp musicd.service ~/.config/systemd/user/
+cp gopald.service ~/.config/systemd/user/
 systemctl --user daemon-reload
-systemctl --user enable musicd.service
-systemctl --user start musicd.service
+systemctl --user enable gopald.service
+systemctl --user start gopald.service
 ```
 
 ### Development Setup
@@ -66,24 +66,24 @@ gopald --foreground --verbose
 
 1. Copy the service file:
 ```bash
-cp musicd.service ~/.config/systemd/user/
+cp gopald.service ~/.config/systemd/user/
 ```
 
 2. Enable and start the service:
 ```bash
 systemctl --user daemon-reload
-systemctl --user enable musicd.service
-systemctl --user start musicd.service
+systemctl --user enable gopald.service
+systemctl --user start gopald.service
 ```
 
 3. Check service status:
 ```bash
-systemctl --user status musicd.service
+systemctl --user status gopald.service
 ```
 
 4. View logs:
 ```bash
-journalctl --user -u musicd.service -f
+journalctl --user -u gopald.service -f
 ```
 
 ## Supported Media Players
